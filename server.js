@@ -39,11 +39,11 @@ DClient.on('message', (message) => {
 	const channelID = message.channel.id;
 	if (channelType != 'text' || !channelName || channelID != Config.Discord.botChannel) return;
 
-	if (message.member.roles.cache.some(role => role.name === Config.Discord.accessRole)) {
+	if (!Config.Discord.accessRole || message.member.roles.cache.some(role => role.name === Config.Discord.accessRole)) {
 		const arguments = message.content.slice(Config.Discord.botPrefix.length).trim().split(/ +/g);
 		const command = arguments.shift().toLowerCase();
 
-		if (command === 'check') {
+		if (command === Config.Discord.botCommand) {
             message.delete().catch(console.error);
 
             const argument = arguments.join('');

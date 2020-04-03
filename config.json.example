@@ -3,6 +3,7 @@
         "botToken": "",
         "botChannel": "",
         "botPrefix": "!",
+        "botCommand": "check",
         "accessRole": ""
     },
     "Steam": {

@@ -30,6 +30,8 @@ DClient.on('ready', () => {
 	DClient_Ready = true;
 });
 
+var buisy = false;
+
 DClient.on('message', (message) => {
 	if (message.author.bot) return;
 	if (message.content.indexOf(Config.Discord.botPrefix) !== 0) return;
@@ -46,19 +48,27 @@ DClient.on('message', (message) => {
 		if (command === Config.Discord.botCommand) {
             message.delete().catch(console.error);
 
-            const argument = arguments.join('');
-            Utility.isValidSteamID(argument).then((validSteamID) => {
-                Utility.getSteamProfile(`https://steamcommunity.com/profiles/${validSteamID}`).then((steamProfile) => {
-                    message.reply(`Requesting Live Game! Please Wait.`);
-                    requestLiveGameForUser(validSteamID, steamProfile, message);
+            if (!buisy) {
+                buisy = true; 
+
+                const argument = arguments.join('');
+                Utility.isValidSteamID(argument).then((validSteamID) => {
+                    Utility.getSteamProfile(`https://steamcommunity.com/profiles/${validSteamID}`).then((steamProfile) => {
+                        message.reply(`Requesting Live Game! Please Wait.`);
+                        requestLiveGameForUser(validSteamID, steamProfile, message);
+                    }).catch((err) => {
+                        console.log(err);
+                        buisy = false;
+                        message.reply(`Unable to get profile information, please try again!`);
+                    });
                 }).catch((err) => {
                     console.log(err);
-                    message.reply(`Unable to get profile information, please try again!`);
+                    buisy = false;
+                    message.reply(`Invalid Argument! Use SteamID64 or Profile-URL!`);
                 });
-            }).catch((err) => {
-                console.log(err);
-                message.reply(`Invalid Argument! Use SteamID64 or Profile-URL!`);
-            });
+            } else {
+                message.reply(`Please wait until the last user got checked!`);
+            }
 		}
 	} else {
 		message.reply(`You don't have permissions to use this command!`);
@@ -130,6 +140,7 @@ function requestLiveGameForUser(validSteamID, steamProfile, message) {
         }
 
         steamUser.logOff();
+        buisy = false;
     });
 }
 

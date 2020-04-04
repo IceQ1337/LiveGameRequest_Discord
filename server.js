@@ -113,7 +113,7 @@ function requestLiveGameForUser(validSteamID, steamProfile, message) {
     });
 
     steamUser.on('loggedOn', (details) => {
-        steamUser.setPersona(SteamUser.EPersonaState.Online);
+        steamUser.setPersona(SteamUser.EPersonaState.Invisible);
         steamUser.gamesPlayed([730]);
     });
 

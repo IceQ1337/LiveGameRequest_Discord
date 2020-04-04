@@ -202,7 +202,10 @@ function getLiveGameData(validSteamID, gameData) {
     
                 var teamOne = players.splice(0, Math.floor(players.length / 2));
                 var teamTwo = players;
-    
+
+                teamOne.sort((p1, p2) => p2.scores - p1.scores);
+                teamTwo.sort((p1, p2) => p2.scores - p1.scores);
+
                 function getPlayerStats(p) {
                     return `\`${p.kills.toString().padStart(2, ' ')}\`   \`${p.assists.toString().padStart(2, ' ')}\`   \`${p.deaths.toString().padStart(2, ' ')}\`   \`${p.mvps.toString().padStart(2, ' ')}\`   \`${p.scores.toString().padStart(2, ' ')}\``;
                 }

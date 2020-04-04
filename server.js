@@ -60,19 +60,19 @@ DClient.on('message', (message) => {
                     }).catch((err) => {
                         console.log(err);
                         buisy = false;
-                        message.reply(`Unable to get profile information, please try again!`).then(reply => reply.delete(10000));
+                        message.reply(`Unable to get profile information, please try again!`).then(reply => reply.delete({timeout: 5000}));
                     });
                 }).catch((err) => {
-                    console.log(err);
+                    if (err) console.log(err);
                     buisy = false;
-                    message.reply(`Invalid Argument! Use SteamID64 or Profile-URL!`).then(reply => reply.delete(10000));
+                    message.reply(`Invalid Argument! Use SteamID64 or Profile-URL!`).then(reply => reply.delete({timeout: 5000}));
                 });
             } else {
-                message.reply(`Please wait until the last user got checked!`).then(reply => reply.delete(10000));
+                message.reply(`Please wait until the last user got checked!`).then(reply => reply.delete({timeout: 5000}));
             }
 		}
 	} else {
-		message.reply(`You don't have permissions to use this command!`).then(reply => reply.delete(10000));
+		message.reply(`You don't have permissions to use this command!`).then(reply => reply.delete({timeout: 5000}));
 	}
 });
 
@@ -133,11 +133,11 @@ function requestLiveGameForUser(validSteamID, steamProfile, message, reply) {
                     reply.delete();
                     sendLiveGameMessage(liveGameData, steamProfile);
                 } else {
-                    message.reply(`This user is currently not in an official live game!`).then(reply => reply.delete(10000));
+                    message.reply(`This user is currently not in an official live game!`).then(reply => reply.delete({timeout: 5000}));
                 }
             }).catch((err) => {
                 console.log(err);
-                message.reply(`An error occurred while checking for a live game!`).then(reply => reply.delete(10000));
+                message.reply(`An error occurred while checking for a live game!`).then(reply => reply.delete({timeout: 5000}));
             });
         }
 

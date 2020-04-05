@@ -197,9 +197,13 @@ function getLiveGameData(validSteamID, gameData) {
         
             Utility.getPlayerSummaries(Config.Steam.apiKey, players.map(p => p.steamid).join(',')).then((playerSummaries) => {
                 for (let i = 0; i < players.length; i++) {
-                    players[i].personaname = playerSummaries[i].personaname;
-                    players[i].profileurl = playerSummaries[i].profileurl;
-                    players[i].avatarfull = playerSummaries[i].avatarfull;
+                    for (let j = 0; j < playerSummaries.length; j++) {
+                        if (players[i].steamid == playerSummaries[j].steamid) {
+                            players[i].personaname = playerSummaries[j].personaname;
+                            players[i].profileurl = playerSummaries[j].profileurl;
+                            players[i].avatarfull = playerSummaries[j].avatarfull;
+                        }
+                    }
                 }
     
                 var teamOne = players.splice(0, Math.floor(players.length / 2));

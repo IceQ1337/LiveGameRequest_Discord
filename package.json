@@ -17,7 +17,7 @@
   "author": "IceQ1337",
   "license": "ISC",
   "dependencies": {
-    "discord.js": "^12.3.1",
+    "discord.js": "^12.4.1",
     "globaloffensive": "^2.1.0",
     "request": "^2.88.2",
     "steam-totp": "^2.1.1",

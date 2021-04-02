@@ -1,14 +1,14 @@
 {
-  "name": "livegamechecker_discord",
+  "name": "livegamerequest_discord",
   "version": "1.0.0",
-  "description": "Check a cs:go players current live match via Discord bot",
+  "description": "Request a cs:go players current live match via Discord bot",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/IceQ1337-CSGO/LiveGameChecker_Discord.git"
+    "url": "git+https://github.com/IceQ1337-CSGO/LiveGameRequest_Discord.git"
   },
   "keywords": [
     "steam",
@@ -18,9 +18,9 @@
   "author": "IceQ1337",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/IceQ1337-CSGO/LiveGameChecker_Discord/issues"
+    "url": "https://github.com/IceQ1337-CSGO/LiveGameRequest_Discord/issues"
   },
-  "homepage": "https://github.com/IceQ1337-CSGO/LiveGameChecker_Discord#readme",
+  "homepage": "https://github.com/IceQ1337-CSGO/LiveGameRequest_Discord#readme",
   "dependencies": {
     "discord.js": "^12.5.1",
     "globaloffensive": "^2.1.0",

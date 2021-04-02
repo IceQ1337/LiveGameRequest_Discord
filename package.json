@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/IceQ1337-CSGO/LiveGameRequest_Discord.git"
+    "url": "git+https://github.com/IceQ1337/LiveGameRequest_Discord.git"
   },
   "keywords": [
     "steam",
@@ -18,9 +18,9 @@
   "author": "IceQ1337",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/IceQ1337-CSGO/LiveGameRequest_Discord/issues"
+    "url": "https://github.com/IceQ1337/LiveGameRequest_Discord/issues"
   },
-  "homepage": "https://github.com/IceQ1337-CSGO/LiveGameRequest_Discord#readme",
+  "homepage": "https://github.com/IceQ1337/LiveGameRequest_Discord#readme",
   "dependencies": {
     "discord.js": "^12.5.1",
     "globaloffensive": "^2.1.0",

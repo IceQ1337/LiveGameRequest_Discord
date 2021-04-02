@@ -19,20 +19,20 @@ const SteamID = require('steamid');
 const Utility_Module = require('./utility');
 const Utility = new Utility_Module();
 
-const DClient = new Discord.Client();
-var DClient_Ready = false;
+const DiscordClient = new Discord.Client();
+var DiscordClient_Ready = false;
 
-DClient.on('error', (err) => {
-	console.log(err);
+DiscordClient.on('error', (err) => {
+	console.log('Discord Client Error: ' + err);
 });
 
-DClient.on('ready', () => {
-	DClient_Ready = true;
+DiscordClient.on('ready', () => {
+	DiscordClient_Ready = true;
 });
 
 var buisy = false;
 
-DClient.on('message', (message) => {
+DiscordClient.on('message', (message) => {
 	if (message.author.bot) return;
 	if (message.content.indexOf(Config.Discord.botPrefix) !== 0) return;
 
@@ -54,29 +54,32 @@ DClient.on('message', (message) => {
                 const argument = arguments.join('');
                 Utility.isValidSteamID(argument).then((validSteamID) => {
                     Utility.getSteamProfile(`https://steamcommunity.com/profiles/${validSteamID}`).then((steamProfile) => {
-                        message.reply(`Requesting Live Game! Please Wait.`).then((reply) => {
+                        message.reply(`Requesting live game! Please wait...`).then((reply) => {
                             requestLiveGameForUser(validSteamID, steamProfile, message, reply);
                         });
                     }).catch((err) => {
-                        console.log(err);
+                        if (err) console.log(err);
+
                         buisy = false;
                         message.reply(`Unable to get profile information, please try again!`).then(reply => reply.delete({timeout: 5000}));
                     });
                 }).catch((err) => {
                     if (err) console.log(err);
+
                     buisy = false;
-                    message.reply(`Invalid Argument! Use SteamID64 or Profile-URL!`).then(reply => reply.delete({timeout: 5000}));
+                    message.reply(`Invalid argument! Use SteamID64 or Profile-URL!`).then(reply => reply.delete({timeout: 5000}));
                 });
             } else {
-                message.reply(`Please wait until the last user got checked!`).then(reply => reply.delete({timeout: 5000}));
+                message.reply(`Please wait until the last operation has finished!`).then(reply => reply.delete({timeout: 5000}));
             }
 		}
 	} else {
-		message.reply(`You don't have permissions to use this command!`).then(reply => reply.delete({timeout: 5000}));
+		message.reply(`You don't have enough permissions to use this command!`).then(reply => reply.delete({timeout: 5000}));
 	}
 });
 
 var authorImageURL = 'https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/75/753bd236bb93a2484807ba75a3dbb916441825bc_full.jpg';
+
 function sendLiveGameMessage(liveGameData, steamProfile) {
     const avatarURL = (steamProfile && steamProfile.avatarFull ? steamProfile.avatarFull[0] : null);
     const playerName = (steamProfile && steamProfile.steamID ? steamProfile.steamID : 'Unknown');
@@ -93,14 +96,14 @@ function sendLiveGameMessage(liveGameData, steamProfile) {
         messageEmbed.setThumbnail(avatarURL);
     }
 
-    DClient.channels.cache.get(Config.Discord.botChannel).send(messageEmbed).catch(err => console.log(err));
+    DiscordClient.channels.cache.get(Config.Discord.botChannel).send(messageEmbed).catch(err => console.log(err));
 }
 
 Utility.getSteamProfile('https://steamcommunity.com/profiles/76561198129782984').then((steamProfile) => {
     if (steamProfile) authorImageURL = steamProfile.avatarFull[0];
 }).catch(err => console.log(err));
 
-DClient.login(Config.Discord.botToken);
+DiscordClient.login(Config.Discord.botToken);
 
 function requestLiveGameForUser(validSteamID, steamProfile, message, reply) {
     const steamUser = new SteamUser();
@@ -137,7 +140,7 @@ function requestLiveGameForUser(validSteamID, steamProfile, message, reply) {
                 }
             }).catch((err) => {
                 console.log(err);
-                message.reply(`An error occurred while checking for a live game!`).then(reply => reply.delete({timeout: 5000}));
+                message.reply(`An error occurred while checking for live games!`).then(reply => reply.delete({timeout: 5000}));
             });
         }
 

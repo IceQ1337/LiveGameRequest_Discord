@@ -1,2 +1,2 @@
-# CSGOLiveGame
-get current csgo live matches via discord bot
+# LiveGameChecker_Discord
+Check a cs:go players current live match via discord bot

@@ -5,6 +5,9 @@
 Request a cs:go players current live match via Discord bot.  
 ⚠️ This is an old contract work and probably needs maintenance! ⚠️
 
+## Preview
+![Preview Image](https://github.com/IceQ1337-CSGO/LiveGameRequest_Discord/raw/master/preview.png)
+
 ## Requirements
 In order to use this script, you need the following dependencies and tokens:
 

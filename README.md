@@ -86,13 +86,6 @@ In order to contribute to the project, please follow the **GitHub Standard Fork 
 - Submit a **Pull Request** so I can review your changes
 
 ### Used Node.js Modules
-
-    "globaloffensive": "^2.1.0",
-    "request": "^2.88.2",
-    "steam-totp": "^2.1.1",
-    "steam-user": "^4.19.4",
-    "steamid": "^1.1.3",
-    "xml2js": "^0.4.23"
 - [Discord.js](https://github.com/discordjs/discord.js/)
 - [GlobalOffensive](https://github.com/DoctorMcKay/node-globaloffensive)
 - [Request](https://github.com/request/request)

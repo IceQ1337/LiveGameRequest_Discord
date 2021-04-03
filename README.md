@@ -6,7 +6,7 @@ Request a cs:go players current live match via Discord bot.
 
 :warning: | **WARNING: THIS PROJECT IS NOT OPERATIONAL** 
 :---: | :---
-> Valve has removed the ability to request a user's live match. For this reason, the project does not work in its current state because there is no way to get live match data anymore! See [this](https://github.com/DoctorMcKay/node-globaloffensive/issues/59) or this [issue](https://github.com/joshuaferrara/node-csgo/issues/81) for updates on this topic.
+> Valve has removed the ability to request a user's live match. For this reason, the project does not work in its current state because there is no way to get live match data anymore! See [this](https://github.com/DoctorMcKay/node-globaloffensive/issues/59) or [this](https://github.com/joshuaferrara/node-csgo/issues/81) issue for updates on this topic.
 
 Currently, the bot allows only one operation at a time and logs in and out of Steam for every single request. A much better approach would be logging into Steam once and just refreshing the game coordinator connection if needed.  
 

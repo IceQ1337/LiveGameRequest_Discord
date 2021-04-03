@@ -4,13 +4,15 @@
 
 Request a cs:go players current live match via Discord bot.  
 
-> :warning: **WARNING: THIS PROJECT IS NOT OPERATIONAL**  
-> :warning: Valve has removed the ability to request a user's live match. For this reason, the project does not work in its current state!
+:warning: | **WARNING: THIS PROJECT IS NOT OPERATIONAL** 
+:---: | :---
+> Valve has removed the ability to request a user's live match. For this reason, the project does not work in its current state!  
+> See this issue for updates on this topic: https://github.com/DoctorMcKay/node-globaloffensive/issues/59
 
-:information_source: This is an old project requested by a customer that was written relatively quickly and uncleanly.  
-:information_source: I made this project public because I had the code just lying around. 
+Currently, the bot allows only one operation at a time and logs in and out of Steam for every single request. A much better approach would be logging into Steam once and just refreshing the game coordinator connection if needed.  
 
-Currently, the bot allows only one operation at a time and logs in and out of Steam for every single request. A much better approach would be logging into Steam once and just refreshing the game coordinator connection if needed.
+This is an old project requested by a customer that was written relatively quickly and uncleanly.  
+I made this project public because I had the code just lying around. 
 
 ## Preview
 ![Preview Image](https://github.com/IceQ1337/LiveGameRequest_Discord/raw/master/preview.png)

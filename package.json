@@ -22,7 +22,7 @@
   },
   "homepage": "https://github.com/IceQ1337/LiveGameRequest_Discord#readme",
   "dependencies": {
-    "discord.js": "^12.5.1",
+    "discord.js": "^13.1.0",
     "globaloffensive": "^2.1.0",
     "request": "^2.88.2",
     "steam-totp": "^2.1.1",
